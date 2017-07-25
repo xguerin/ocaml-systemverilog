@@ -1,67 +1,44 @@
 module Literal : sig
-  type t =
-    | Int of int
-    | String of string
-    | Hex of string
-    | Dec of string
-    | Bin of string
-    | Oct of string
+  include module type of Grammar_types.Literal
   val to_s : t -> string
 end
 
 module Signing : sig
-  type t =
-    | Signed
-    | Unsigned
+  include module type of Grammar_types.Signing
   val to_s : t -> string
 end
 
 module IntegerVectorType : sig
-  type t =
-    | Bit
-    | Logic
-    | Reg
+  include module type of Grammar_types.IntegerVectorType
   val to_s : t -> string
 end
 
 module IntegerAtomType : sig
-  type t =
-    | Byte
-    | Shortint
-    | Int
-    | Longint
-    | Integer
-    | Time
+  include module type of Grammar_types.IntegerAtomType
   val to_s : t -> string
 end
 
 module DataType : sig
-  type t =
-    | IntegerVectorType of IntegerVectorType.t * Signing.t option
-    | IntegerAtomType of IntegerAtomType.t * Signing.t option
+  include module type of Grammar_types.DataType
   val to_s : t -> string
 end
 
 module ParamAssignment : sig
-  type t = string * Literal.t option
+  include module type of Grammar_types.ParamAssignment
   val to_s : t -> string
 end
 
 module LocalParam : sig
-  type t =
-    | Implicit of ParamAssignment.t list
-    | Typed of DataType.t * ParamAssignment.t list
+  include module type of Grammar_types.LocalParam
   val to_s : t -> string
 end
 
 module PackageItem : sig
-  type t =
-    | Localparam of LocalParam.t
+  include module type of Grammar_types.PackageItem
   val print : t -> unit
 end
 
 module Description : sig
-  type t =
-    | Package of string * PackageItem.t list
+  include module type of Grammar_types.Description
   val print : t -> unit
 end

@@ -1,5 +1,5 @@
 module Literal = struct
-  type t = [%import: Grammar.Literal.t]
+  include Grammar_types.Literal
 
   let to_s = function
     | Int (d)    -> string_of_int d
@@ -11,7 +11,7 @@ module Literal = struct
 end
 
 module Signing = struct
-  type t = [%import: Grammar.Signing.t]
+  include Grammar_types.Signing
 
   let to_s = function
     | Signed   -> "signed"
@@ -19,7 +19,7 @@ module Signing = struct
 end
 
 module IntegerVectorType = struct
-  type t = [%import: Grammar.IntegerVectorType.t]
+  include Grammar_types.IntegerVectorType
 
   let to_s = function
     | Bit   -> "bit"
@@ -28,7 +28,7 @@ module IntegerVectorType = struct
 end
 
 module IntegerAtomType = struct
-  type t = [%import: Grammar.IntegerAtomType.t]
+  include Grammar_types.IntegerAtomType
 
   let to_s = function
     | Byte     -> "byte"
@@ -40,7 +40,7 @@ module IntegerAtomType = struct
 end
 
 module DataType = struct
-  type t = [%import: Grammar.DataType.t]
+  include Grammar_types.DataType
 
   let to_s = function
     | IntegerVectorType (t, None)   -> IntegerVectorType.to_s t
@@ -50,7 +50,7 @@ module DataType = struct
 end
 
 module ParamAssignment = struct
-  type t = [%import: Grammar.ParamAssignment.t]
+  include Grammar_types.ParamAssignment
 
   let to_s = function
     | s, None   -> s
@@ -58,7 +58,7 @@ module ParamAssignment = struct
 end
 
 module LocalParam = struct
-  type t = [%import: Grammar.LocalParam.t]
+  include Grammar_types.LocalParam
 
   let rec param_assignments_s = function
     | [] -> ""
@@ -71,7 +71,7 @@ module LocalParam = struct
 end
 
 module PackageItem = struct
-  type t = [%import: Grammar.PackageItem.t]
+  include Grammar_types.PackageItem
 
   let print = function
     | Localparam (l) ->
@@ -80,7 +80,7 @@ module PackageItem = struct
 end
 
 module Description = struct
-  type t = [%import: Grammar.Description.t]
+  include Grammar_types.Description
 
   let rec print_package_items = function
     | [] -> ()
@@ -89,4 +89,3 @@ module Description = struct
   let print = function
     | Package (s, l) -> Printf.printf "Package: %s\n" s; print_package_items l
 end
-

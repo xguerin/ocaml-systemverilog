@@ -1,0 +1,16 @@
+opam-version: "1.2"
+maintainer: "Xavier Guérin <ghub@applepine.org>"
+authors: ["Xavier Guérin <ghub@applepine.org>"]
+homepage: "https://github.com/xguerin/systemverilog"
+doc: "https://xguerin.github.io/systemverilog/wiki"
+license: "ISC"
+dev-repo: "https://github.com/xguerin/systemverilog.git"
+bug-reports: "https://github.com/xguerin/systemverilog/issues"
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+depends: [
+  "jbuilder" { build                 }
+  "menhir"   { build & >= "20170418" }
+]
+available: [ ocaml-version >= "4.01.0"]

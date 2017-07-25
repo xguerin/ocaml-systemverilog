@@ -1,3 +1,4 @@
+open Systemverilog
 open Lexer
 open Lexing
 

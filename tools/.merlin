@@ -1,0 +1,5 @@
+B ../_build/default/src
+B ../_build/default/tools
+FLG -w -40
+PKG unix
+S ../src

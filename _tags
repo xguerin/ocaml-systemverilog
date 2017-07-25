@@ -1,9 +1,0 @@
-true : bin_annot, safe_string
-true: use_menhir
-
-<src> : include
-<src/*.ml>: package(ppx_import)
-<src/parser.ml>: warn(-40)
-<src/*.cmx> and not "src/SystemVerilog.cmx": for-pack(SystemVerilog)
-
-<tools/*>: use_SystemVerilog, use_unix

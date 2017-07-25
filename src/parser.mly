@@ -40,7 +40,7 @@ sv:
   | EOF { None}
 
 package:
-  | PACKAGE; id = ID; SEMICOLON; items = package_items; ENDPACKAGE { Package (id, items) }
+  | PACKAGE; id = ID; SEMICOLON; items = package_items; ENDPACKAGE { Grammar.Description.Package (id, items) }
 
 package_items: e = rev_package_items { List.rev e };
 

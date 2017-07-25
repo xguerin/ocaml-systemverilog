@@ -1,7 +1,0 @@
-description = "SystemVerilog for OCaml"
-version = "%{version}%"
-requires = "ppx_import"
-archive(byte) = "systemverilog.cma"
-archive(native) = "systemverilog.cmxa"
-plugin(byte) = "systemverilog.cma"
-plugin(native) = "systemverilog.cmxs"

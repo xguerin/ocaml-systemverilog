@@ -1,8 +1,0 @@
-PKG ppx_import core
-
-S src
-S _build/src
-S _build/tools
-
-B _build/src
-B _build/tools
