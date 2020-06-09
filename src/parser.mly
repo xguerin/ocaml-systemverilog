@@ -1,3 +1,11 @@
+%{
+(* fixes issue between Menhir and dune *)
+(* https://github.com/ocaml/dune/issues/2450 *)
+module Systemverilog = struct
+  module Grammar_types = Grammar_types
+end
+%}
+
 %token <string> ID
 %token <int>    L_INT
 %token <string> L_STRING
@@ -72,21 +80,21 @@ data_type:
   | i = integer_atom_type; s = signing   { IntegerAtomType (i, Some s)   }
 
 integer_vector_type:
-  | BIT   { Bit }
-  | LOGIC { Logic }
-  | REG   { Reg }
+  | BIT   { Grammar.IntegerVectorType.Bit }
+  | LOGIC { Grammar.IntegerVectorType.Logic }
+  | REG   { Grammar.IntegerVectorType.Reg }
 
 integer_atom_type:
-  | BYTE     { Byte     }
-  | SHORTINT { Shortint }
-  | INT      { Int      }
-  | LONGINT  { Longint  }
-  | INTEGER  { Integer  }
-  | TIME     { Time     }
+  | BYTE     { Grammar.IntegerAtomType.Byte     }
+  | SHORTINT { Grammar.IntegerAtomType.Shortint }
+  | INT      { Grammar.IntegerAtomType.Int      }
+  | LONGINT  { Grammar.IntegerAtomType.Longint  }
+  | INTEGER  { Grammar.IntegerAtomType.Integer  }
+  | TIME     { Grammar.IntegerAtomType.Time     }
 
 signing:
-  | SIGNED   { Signed   }
-  | UNSIGNED { Unsigned }
+  | SIGNED   { Grammar.Signing.Signed   }
+  | UNSIGNED { Grammar.Signing.Unsigned }
 
 literal:
   | i = L_INT    { Int i    }

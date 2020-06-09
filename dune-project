@@ -1,7 +1,7 @@
 (lang dune 2.5)
 
-(name Systemverilog)
-(version 0.0.1)
+(name systemverilog)
+(version 0.0.2)
 
 (formatting disabled)
 (using menhir 2.0)
@@ -16,7 +16,7 @@
 (bug_reports "https://todo.sr.ht/~xguerin/ocaml-systemverilog")
 
 (package
- (name Systemverilog)
+ (name systemverilog)
  (synopsis "SystemVerilog for OCaml")
  (depends
   (dune (and :build (>= 2.5)))
